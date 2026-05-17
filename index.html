@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="nl">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tyano's Bliksemheld</title>
+    <link rel="icon" type="image/svg+xml" href="%BASE_URL%favicon.svg">
+  </head>
+  <body>
+    <main class="game-shell" aria-label="Tyano's Bliksemheld">
+      <header class="topbar">
+        <div>
+          <h1>Tyano's Bliksemheld</h1>
+          <p>Raak elke zombie op zijn hoofd. Laat bliksem via muren en dozen terugkaatsen.</p>
+        </div>
+        <div class="hud" aria-live="polite">
+          <span id="levelLabel">Level 1</span>
+          <span id="shotsLabel">Bliksem: 0</span>
+          <span id="zombiesLabel">Zombies: 0</span>
+        </div>
+      </header>
+
+      <section class="play-area">
+        <canvas id="gameCanvas" width="960" height="600" aria-label="Speelveld"></canvas>
+        <div id="messagePanel" class="message-panel hidden">
+          <h2 id="messageTitle"></h2>
+          <p id="messageText"></p>
+          <button id="primaryButton" type="button">Verder</button>
+        </div>
+      </section>
+
+      <footer class="controls">
+        <button id="restartButton" type="button">Level opnieuw</button>
+        <button id="resetButton" type="button">Vanaf level 1</button>
+      </footer>
+    </main>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

@@ -1,0 +1,165 @@
+:root {
+  color-scheme: dark;
+  --bg: #10131a;
+  --panel: #1c2430;
+  --text: #f4f7fb;
+  --muted: #aab6c8;
+  --accent: #4fc3ff;
+  --accent-strong: #ffe66d;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  background:
+    radial-gradient(circle at 20% 10%, rgba(79, 195, 255, 0.16), transparent 28rem),
+    linear-gradient(135deg, #10131a 0%, #161b24 55%, #0f1410 100%);
+  color: var(--text);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+button {
+  border: 0;
+  border-radius: 6px;
+  background: var(--accent);
+  color: #071018;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 700;
+  min-height: 44px;
+  padding: 0 18px;
+}
+
+button:hover {
+  background: var(--accent-strong);
+}
+
+.game-shell {
+  display: grid;
+  gap: 14px;
+  margin: 0 auto;
+  max-width: 1120px;
+  min-height: 100vh;
+  padding: 18px;
+}
+
+.topbar {
+  align-items: end;
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+}
+
+.topbar h1 {
+  font-size: clamp(1.5rem, 3vw, 2.4rem);
+  line-height: 1.05;
+  margin: 0 0 6px;
+}
+
+.topbar p {
+  color: var(--muted);
+  line-height: 1.4;
+  margin: 0;
+  max-width: 680px;
+}
+
+.hud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.hud span,
+.controls button {
+  background: var(--panel);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 6px;
+  color: var(--text);
+  min-width: 112px;
+  padding: 10px 12px;
+  text-align: center;
+}
+
+.play-area {
+  background: #080b10;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 8px;
+  box-shadow: 0 18px 60px rgba(0, 0, 0, 0.35);
+  overflow: hidden;
+  position: relative;
+}
+
+canvas {
+  aspect-ratio: 16 / 10;
+  display: block;
+  height: auto;
+  touch-action: none;
+  width: 100%;
+}
+
+.message-panel {
+  align-items: center;
+  background: rgba(16, 19, 26, 0.86);
+  display: flex;
+  flex-direction: column;
+  inset: 0;
+  justify-content: center;
+  padding: 24px;
+  position: absolute;
+  text-align: center;
+}
+
+.message-panel.hidden {
+  display: none;
+}
+
+.message-panel h2 {
+  font-size: clamp(1.7rem, 4vw, 3rem);
+  margin: 0 0 10px;
+}
+
+.message-panel p {
+  color: var(--muted);
+  line-height: 1.45;
+  margin: 0 0 22px;
+  max-width: 520px;
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+@media (max-width: 760px) {
+  .game-shell {
+    padding: 10px;
+  }
+
+  .topbar {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .hud {
+    justify-content: stretch;
+  }
+
+  .hud span {
+    flex: 1 1 130px;
+  }
+
+  .controls button {
+    flex: 1 1 160px;
+  }
+}
