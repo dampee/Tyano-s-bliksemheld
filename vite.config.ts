@@ -1,7 +1,7 @@
 import { defineConfig } from "vite";
 
 export default defineConfig({
-  base: "/mini-game/",
+  base: "/Tyano-s-bliksemheld/",
   server: {
     port: 5173,
   },

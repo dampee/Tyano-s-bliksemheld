@@ -14,7 +14,7 @@ npm install
 npm run dev
 ```
 
-Open daarna `http://localhost:5173`.
+Open daarna `http://localhost:5173/Tyano-s-bliksemheld/`.
 
 ## Build
 
@@ -25,14 +25,14 @@ npm run preview
 
 ## GitHub Pages
 
-De repository is voorbereid voor GitHub Pages met dezelfde Vite-aanpak als CrystalHarp Sampler:
+De repository is voorbereid voor GitHub Pages:
 
-- `vite.config.ts` gebruikt `base: "/mini-game/"`.
+- `vite.config.ts` gebruikt `base: "/Tyano-s-bliksemheld/"`.
 - `.github/workflows/deploy.yml` bouwt met `npm ci` en `npm run build`.
 - `public/.nojekyll` voorkomt Jekyll-verwerking.
 - `npm run deploy` publiceert handmatig via `gh-pages`.
 
-Als de GitHub-repository anders heet dan `mini-game`, pas dan `homepage` in `package.json` en `base` in `vite.config.ts` aan.
+De gepubliceerde site komt op `https://dampee.github.io/Tyano-s-bliksemheld/`.
 
 ## Structuur
 
