@@ -45,7 +45,8 @@ button:hover {
 
 .game-shell {
   display: grid;
-  grid-template-rows: auto minmax(0, 1fr) auto;
+  align-content: start;
+  grid-template-rows: auto auto auto;
   gap: 14px;
   margin: 0 auto;
   max-width: 1120px;
@@ -55,10 +56,9 @@ button:hover {
 }
 
 .topbar {
-  align-items: end;
-  display: flex;
-  gap: 16px;
-  justify-content: space-between;
+  align-items: start;
+  display: grid;
+  gap: 4px;
 }
 
 .topbar h1 {
@@ -77,11 +77,26 @@ button:hover {
 .hud {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
-  justify-content: flex-end;
+  gap: 6px;
+  left: 12px;
+  pointer-events: none;
+  position: absolute;
+  right: 12px;
+  top: 12px;
+  z-index: 2;
 }
 
-.hud span,
+.hud span {
+  background: rgba(28, 36, 48, 0.82);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 6px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+  color: var(--text);
+  min-width: 104px;
+  padding: 8px 10px;
+  text-align: center;
+}
+
 .controls button {
   background: var(--panel);
   border: 1px solid rgba(255, 255, 255, 0.12);
@@ -109,7 +124,7 @@ canvas {
   aspect-ratio: 16 / 10;
   display: block;
   height: auto;
-  max-height: calc(100dvh - 190px);
+  max-height: calc(100dvh - 150px);
   max-width: 100%;
   touch-action: none;
   width: 100%;
@@ -157,9 +172,7 @@ canvas {
   }
 
   .topbar {
-    align-items: stretch;
-    flex-direction: column;
-    gap: 8px;
+    gap: 2px;
   }
 
   .topbar h1 {
@@ -173,7 +186,9 @@ canvas {
   }
 
   .hud {
-    justify-content: stretch;
+    left: 8px;
+    right: 8px;
+    top: 8px;
   }
 
   .hud span,
@@ -183,7 +198,7 @@ canvas {
   }
 
   .hud span {
-    flex: 1 1 130px;
+    flex: 1 1 92px;
     min-width: 0;
   }
 
@@ -193,14 +208,14 @@ canvas {
 
   canvas {
     height: auto;
-    max-height: calc(100dvh - 178px);
+    max-height: calc(100dvh - 132px);
     width: min(100%, 96dvh);
   }
 }
 
 @media (max-width: 760px) and (orientation: portrait) {
   canvas {
-    max-height: min(62dvh, calc(100dvh - 178px));
+    max-height: min(68dvh, calc(100dvh - 132px));
     width: min(100%, 99.2dvh);
   }
 }
@@ -216,7 +231,7 @@ canvas {
   }
 
   canvas {
-    max-height: calc(100dvh - 126px);
+    max-height: calc(100dvh - 88px);
     width: min(100%, 120dvh);
   }
 }
