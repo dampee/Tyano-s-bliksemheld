@@ -2,6 +2,12 @@
 
 Een kleine 2D game met Vite en TypeScript. De held schiet bliksemstralen die terugkaatsen tegen muren en dozen. Raak alle zombies op hun hoofd voordat de bliksem op is.
 
+## Spelen
+
+De nieuwste versie staat op GitHub Pages:
+
+https://dampee.github.io/Tyano-s-bliksemheld/
+
 ## Development
 
 Vereisten:
@@ -25,14 +31,14 @@ npm run preview
 
 ## GitHub Pages
 
-De repository is voorbereid voor GitHub Pages:
+De repository publiceert automatisch naar GitHub Pages wanneer er naar `main` wordt gepusht:
 
 - `vite.config.ts` gebruikt `base: "/Tyano-s-bliksemheld/"`.
 - `.github/workflows/deploy.yml` bouwt met `npm ci` en `npm run build`.
 - `public/.nojekyll` voorkomt Jekyll-verwerking.
 - `npm run deploy` publiceert handmatig via `gh-pages`.
 
-De gepubliceerde site komt op `https://dampee.github.io/Tyano-s-bliksemheld/`.
+De gepubliceerde site staat op `https://dampee.github.io/Tyano-s-bliksemheld/`.
 
 ## Structuur
 
