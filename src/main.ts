@@ -62,6 +62,8 @@ const messagePanel = getElement<HTMLDivElement>("messagePanel");
 const messageTitle = getElement<HTMLHeadingElement>("messageTitle");
 const messageText = getElement<HTMLParagraphElement>("messageText");
 const primaryButton = getElement<HTMLButtonElement>("primaryButton");
+const menuButton = getElement<HTMLButtonElement>("menuButton");
+const menuPanel = getElement<HTMLDivElement>("menuPanel");
 const restartButton = getElement<HTMLButtonElement>("restartButton");
 const resetButton = getElement<HTMLButtonElement>("resetButton");
 
@@ -339,6 +341,15 @@ function hideMessage(): void {
   messagePanel.classList.add("hidden");
 }
 
+function setMenuOpen(isOpen: boolean): void {
+  menuPanel.classList.toggle("hidden", !isOpen);
+  menuButton.setAttribute("aria-expanded", String(isOpen));
+}
+
+function toggleMenu(): void {
+  setMenuOpen(menuPanel.classList.contains("hidden"));
+}
+
 function nextLevel(): void {
   if (currentLevelIndex === levels.length - 1) {
     state.status = "won";
@@ -354,6 +365,7 @@ function nextLevel(): void {
 }
 
 function restartLevel(): void {
+  setMenuOpen(false);
   state = createLevelState(currentLevelIndex);
   lastShotPath = [];
   hideMessage();
@@ -416,6 +428,7 @@ function handlePointerMove(event: PointerEvent): void {
 }
 
 function handlePointerDown(event: PointerEvent): void {
+  setMenuOpen(false);
   pointer = getCanvasPoint(event);
   activePointerId = event.pointerId;
   canvas.setPointerCapture(event.pointerId);
@@ -600,6 +613,7 @@ canvas.addEventListener("pointermove", handlePointerMove);
 canvas.addEventListener("pointerdown", handlePointerDown);
 canvas.addEventListener("pointerup", handlePointerUp);
 canvas.addEventListener("pointercancel", handlePointerCancel);
+menuButton.addEventListener("click", toggleMenu);
 restartButton.addEventListener("click", restartLevel);
 resetButton.addEventListener("click", resetGame);
 primaryButton.addEventListener("click", () => {

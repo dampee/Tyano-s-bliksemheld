@@ -46,7 +46,7 @@ button:hover {
 .game-shell {
   display: grid;
   align-content: start;
-  grid-template-rows: auto auto auto;
+  grid-template-rows: auto auto;
   gap: 14px;
   margin: 0 auto;
   max-width: 1120px;
@@ -97,7 +97,7 @@ button:hover {
   text-align: center;
 }
 
-.controls button {
+.menu-panel button {
   background: var(--panel);
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 6px;
@@ -105,6 +105,58 @@ button:hover {
   min-width: 112px;
   padding: 10px 12px;
   text-align: center;
+}
+
+.game-menu {
+  bottom: 12px;
+  display: grid;
+  gap: 8px;
+  justify-items: end;
+  position: absolute;
+  right: 12px;
+  z-index: 3;
+}
+
+.menu-button {
+  align-items: center;
+  background: rgba(28, 36, 48, 0.86);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 50%;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+  color: var(--text);
+  display: inline-flex;
+  font-size: 1.3rem;
+  height: 44px;
+  justify-content: center;
+  letter-spacing: 1px;
+  line-height: 1;
+  min-height: 44px;
+  padding: 0 0 6px;
+  width: 44px;
+}
+
+.menu-button:hover {
+  background: rgba(255, 230, 109, 0.92);
+  color: #071018;
+}
+
+.menu-panel {
+  background: rgba(16, 19, 26, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 8px;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.36);
+  display: grid;
+  gap: 8px;
+  padding: 8px;
+  width: min(230px, calc(100vw - 40px));
+}
+
+.menu-panel.hidden {
+  display: none;
+}
+
+.menu-panel button {
+  width: 100%;
 }
 
 .play-area {
@@ -158,13 +210,6 @@ canvas {
   max-width: 520px;
 }
 
-.controls {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  justify-content: center;
-}
-
 @media (max-width: 760px) {
   .game-shell {
     gap: 8px;
@@ -192,7 +237,7 @@ canvas {
   }
 
   .hud span,
-  .controls button {
+  .menu-panel button {
     min-height: 38px;
     padding: 8px 10px;
   }
@@ -202,20 +247,21 @@ canvas {
     min-width: 0;
   }
 
-  .controls button {
-    flex: 1 1 160px;
+  .game-menu {
+    bottom: 8px;
+    right: 8px;
   }
 
   canvas {
     height: auto;
-    max-height: calc(100dvh - 132px);
+    max-height: calc(100dvh - 88px);
     width: min(100%, 96dvh);
   }
 }
 
 @media (max-width: 760px) and (orientation: portrait) {
   canvas {
-    max-height: min(68dvh, calc(100dvh - 132px));
+    max-height: min(72dvh, calc(100dvh - 88px));
     width: min(100%, 99.2dvh);
   }
 }
@@ -226,12 +272,12 @@ canvas {
   }
 
   .hud span,
-  .controls button {
+  .menu-panel button {
     font-size: 0.88rem;
   }
 
   canvas {
-    max-height: calc(100dvh - 88px);
+    max-height: calc(100dvh - 72px);
     width: min(100%, 120dvh);
   }
 }

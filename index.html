@@ -22,17 +22,19 @@
           <span id="shotsLabel">Bliksem: 0</span>
           <span id="zombiesLabel">Zombies: 0</span>
         </div>
+        <div class="game-menu">
+          <button id="menuButton" class="menu-button" type="button" aria-label="Menu" aria-expanded="false" aria-controls="menuPanel">...</button>
+          <div id="menuPanel" class="menu-panel hidden">
+            <button id="restartButton" type="button">Level opnieuw</button>
+            <button id="resetButton" type="button">Vanaf level 1</button>
+          </div>
+        </div>
         <div id="messagePanel" class="message-panel hidden">
           <h2 id="messageTitle"></h2>
           <p id="messageText"></p>
           <button id="primaryButton" type="button">Verder</button>
         </div>
       </section>
-
-      <footer class="controls">
-        <button id="restartButton" type="button">Level opnieuw</button>
-        <button id="resetButton" type="button">Vanaf level 1</button>
-      </footer>
     </main>
 
     <script type="module" src="/src/main.ts"></script>
