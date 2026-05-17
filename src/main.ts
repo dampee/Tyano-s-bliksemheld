@@ -139,6 +139,7 @@ let previewPath: Point[] = [];
 let lastShotPath: Point[] = [];
 let lastShotTimer = 0;
 let animationFrameId = 0;
+let activePointerId: number | null = null;
 
 function getElement<T extends HTMLElement>(id: string): T {
   const element = document.getElementById(id);
@@ -407,12 +408,38 @@ function getCanvasPoint(event: PointerEvent): Point {
 }
 
 function handlePointerMove(event: PointerEvent): void {
+  if (activePointerId !== null && event.pointerId !== activePointerId) {
+    return;
+  }
+
   pointer = getCanvasPoint(event);
 }
 
 function handlePointerDown(event: PointerEvent): void {
   pointer = getCanvasPoint(event);
+  activePointerId = event.pointerId;
+  canvas.setPointerCapture(event.pointerId);
+}
+
+function handlePointerUp(event: PointerEvent): void {
+  if (activePointerId !== event.pointerId) {
+    return;
+  }
+
+  pointer = getCanvasPoint(event);
+  activePointerId = null;
+  if (canvas.hasPointerCapture(event.pointerId)) {
+    canvas.releasePointerCapture(event.pointerId);
+  }
   shoot();
+}
+
+function handlePointerCancel(event: PointerEvent): void {
+  if (activePointerId !== event.pointerId) {
+    return;
+  }
+
+  activePointerId = null;
 }
 
 function drawScene(deltaTime: number): void {
@@ -571,6 +598,8 @@ function loop(now: number): void {
 
 canvas.addEventListener("pointermove", handlePointerMove);
 canvas.addEventListener("pointerdown", handlePointerDown);
+canvas.addEventListener("pointerup", handlePointerUp);
+canvas.addEventListener("pointercancel", handlePointerCancel);
 restartButton.addEventListener("click", restartLevel);
 resetButton.addEventListener("click", resetGame);
 primaryButton.addEventListener("click", () => {
